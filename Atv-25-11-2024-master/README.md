@@ -1,70 +1,76 @@
-MenuComponent.js
+Descrição do Projeto
+O objetivo desta atividade é adicionar um novo componente ao seu aplicativo React para exibir os detalhes de um prato selecionado e seus comentários associados. O novo componente, denominado DishDetailComponent, será responsável por exibir informações detalhadas sobre o prato, como seu nome, descrição, imagem, e uma lista de comentários de usuários. A interface será responsiva, adaptando-se a diferentes tamanhos de tela, e utilizará componentes do Bootstrap/Reactstrap, como Card para exibir as informações do prato e uma lista para os comentários.
 
-Quais importações são usadas?
+Objetivo
+A tarefa é adicionar o componente DishDetailComponent ao seu aplicativo React. O componente será utilizado para exibir:
 
-import React, { useState } from 'react';
-Importa o React e o hook useState do React para gerenciar o estado do componente.
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-Importa componentes específicos do Reactstrap usados para construir o layout do cartão:
-Card: Componente principal que estrutura o cartão.
-CardImg: Exibe a imagem dentro do cartão.
-CardImgOverlay: Usado para sobrepor um conteúdo (geralmente texto) sobre a imagem do cartão.
-CardText: Exibe texto dentro do cartão.
-CardBody: Contém o corpo do cartão, onde o conteúdo é inserido.
-CardTitle: Exibe o título dentro do cartão.
+Detalhes do prato selecionado, como nome, descrição e imagem, dentro de um cartão estilizado usando o componente Card do Reactstrap.
+Comentários sobre o prato, com informações sobre o autor e a data do comentário.
+O layout deve ser responsivo, ajustando-se automaticamente em diferentes tamanhos de tela usando as classes do Bootstrap.
+Requisitos da Tarefa
+Tarefa 1: Criar o Componente DishDetailComponent
+Estrutura do Componente:
 
-Existem componentes? O que eles estão fazendo?
+Criar um novo arquivo chamado DishDetailComponent.js na pasta components.
+Definir o componente DishDetail para renderizar as informações do prato selecionado e os comentários passados como props.
+Responsividade:
 
-Sim, o componente principal é o Menu.
-Menu: Mapeia a lista de pratos e exibe um cartão para cada prato. Cada prato é representado visualmente por um cartão com sua imagem e nome.
-Quando um prato é selecionado, o estado do prato selecionado é atualizado, e os detalhes desse prato são exibidos em um cartão separado.
-Qual é o propósito do onDishSelect no projeto?
-A função onDishSelect é chamada quando o usuário clica em um prato do menu. Ela atualiza o estado do prato selecionado (selectedDish), permitindo que o componente exiba os detalhes desse prato na interface, em um cartão específico.
+Utilizar as classes do Bootstrap para tornar o layout responsivo:
+Para telas pequenas (xs e sm), o conteúdo deve ocupar toda a largura da tela (12 colunas).
+Para telas médias e grandes (md e acima), o conteúdo deve ocupar 5 colunas.
+Exibição de Conteúdo:
 
-Para que serve o renderDish?
+O prato e os comentários devem ser exibidos lado a lado em telas maiores.
+Para telas menores, os detalhes do prato e os comentários devem ser empilhados verticalmente.
+Tarefa 2: Exibir os Detalhes do Prato com o Card do Reactstrap
+Função renderDish:
 
-A função renderDish é responsável por renderizar os detalhes de um prato selecionado.
-Se um prato foi selecionado (ou seja, o prato não é null), ele exibe um cartão com a imagem, nome e descrição do prato.
-Caso contrário, a função não faz nada e não renderiza nada.
+Criar a função renderDish dentro do componente DishDetail para renderizar os detalhes do prato utilizando o Card do Reactstrap.
+Exibir o nome do prato como título do cartão, a descrição e a imagem do prato.
+Verificação do Prato:
 
-Para que serve props.dishes.map?
+Se o prato não for válido (nulo ou indefinido), o componente deve retornar uma div vazia.
+Se o prato for válido, o componente exibe os detalhes do prato usando o Card.
+Tarefa 3: Exibir a Lista de Comentários
+Função renderComments:
 
-A função props.dishes.map percorre a lista de pratos passada como prop para o componente Menu.
-Para cada prato, ela cria e exibe um Card com a imagem e o nome do prato.
-Ao clicar no prato, a função onDishSelect é chamada para exibir os detalhes do prato selecionado.
-pratos.js
+Criar a função renderComments para renderizar os comentários relacionados ao prato.
+Exibir cada comentário com o texto, nome do autor e a data. Os comentários devem ser organizados usando a classe de lista sem estilo do Bootstrap.
+Verificação de Comentários:
 
-Quais são as propriedades?
+Se não houver comentários, o componente deve retornar uma div vazia.
+Caso contrário, a lista de comentários deve ser exibida com os dados relevantes de cada um.
+Estrutura do Projeto
+O projeto deve ter a seguinte estrutura de arquivos:
 
-Cada objeto de prato possui as seguintes propriedades:
-id: Um identificador único para o prato.
-name: O nome do prato.
-image: O caminho para a imagem do prato.
-category: A categoria do prato (por exemplo, “prato principal”, “aperitivo”).
-label: Um rótulo opcional que pode ser exibido (por exemplo, "Hot", "New").
-price: O preço do prato.
-description: Uma descrição detalhada do prato.
-comments: Um array de objetos com os comentários dos usuários sobre o prato. Cada comentário possui:
-id: Identificador único do comentário.
-rating: Avaliação do prato (por exemplo, de 1 a 5).
-comment: O texto do comentário.
-author: Nome do autor do comentário.
-date: Data do comentário.
+src/
+components/
+DishDetailComponent.js - Componente que exibe os detalhes do prato e seus comentários.
+MenuComponent.js - Componente que exibe o menu de pratos e gerencia a seleção de um prato.
+App.js - Arquivo principal que importa e utiliza o MenuComponent e DishDetailComponent.
+Tecnologias Utilizadas
+React: Framework JavaScript para construir a interface do usuário.
+Reactstrap: Biblioteca de componentes React que utiliza o Bootstrap para fornecer componentes prontos para uso, como Card e CardImg.
+Bootstrap: Framework de design que oferece um sistema de grid responsivo e classes utilitárias para facilitar a construção de layouts.
+Como Executar o Projeto
 
-Que tipo de dado é usado?
+Primeiro, clone o repositório ou baixe o código-fonte do projeto.
 
-O tipo de dado usado para armazenar os pratos é uma matriz de objetos.
-Cada objeto representa um prato e contém diferentes tipos de dados como:
-Strings (name, category, description, etc.).
-Números (id, price).
-Arrays de objetos (comments).
-App.js
+```js
+git clone <URL_DO_REPOSITORIO>
+cd <diretorio_do_projeto>
+Instale as dependências necessárias usando o npm:
+```
 
-Para que servem os const [dishes]?
+```js
+npm install
+2. Executando a Aplicação
+Após a instalação das dependências, inicie a aplicação com o comando:
+```
 
-A constante dishes é um estado do componente App. Ela contém os dados dos pratos, inicializados com os dados importados do arquivo DISHES.
-Esse estado não é editado diretamente, mas é passado como uma prop para o componente Menu, permitindo que ele exiba os pratos.
-Explique como funciona Pratos={dishes}.
-O componente Menu é renderizado dentro de App.js, e a constante dishes (que contém a lista de pratos) é passada como prop para o componente Menu.
-No componente Menu, a prop dishes é usada para acessar os dados dos pratos e gerar um cartão para cada prato.
-Quando um prato é clicado, a função onDishSelect atualiza o estado de selectedDish, permitindo que os detalhes do prato selecionado sejam exibidos em um cartão separado.
+```js
+npm start
+Isso iniciará o servidor de desenvolvimento, e você poderá acessar a aplicação no navegador através de:
+```
+Conclusão
+Com a conclusão dessa atividade, você terá implementado um componente React que exibe os detalhes de um prato e os comentários relacionados a ele. O layout será responsivo e se adaptará a diferentes tamanhos de tela, utilizando os recursos do Bootstrap e Reactstrap. A interação com o componente será dinâmica, passando os dados via props para exibição correta dos detalhes e comentários.
